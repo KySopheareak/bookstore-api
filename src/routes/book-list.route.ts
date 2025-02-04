@@ -22,10 +22,10 @@ export default [
         const books = await BookListController.getBookList(filter);
 
         if (!books || books.length === 0) {
-          return res.status(404).json({ message: "No books found.........!", data: books });
+          return res.status(404).json({ message: "No books found.........!", data: {data: books} });
         }
 
-        return res.status(200).json({ data: books});
+        return res.status(200).json({ data: {data: books} });
       } catch (error) {
         console.error("===> Fetching Error: ", error);
         ResponseUtil.failwithLog(

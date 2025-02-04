@@ -11,7 +11,7 @@ export { default as AuditLogModel } from "./audit-log.model";
 export let connection: mongoose.Connection | null;
 export const connect = () => {
     mongoose.Promise = global.Promise
-    mongoose.connect("mongodb://" + process.env.MONGO_HOST + "/" + process.env.MONGO_DB_NAME, {
+    mongoose.connect("mongodb+srv://" + process.env.MONGO_HOST + "/" + process.env.MONGO_DB_NAME, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
