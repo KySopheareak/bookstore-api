@@ -9,26 +9,15 @@ export default [
     method: "post",
     handler: async (req: Request, res: Response) => {
       try {
-        const { title, author, category } = req.body;
+        const { search, category } = req.body;
 
-        const filter: Partial<{ title: string; author: string; category: string;}> = {};
+        const filter: Partial<{ search: string; category: any;}> = {};
 
-        if (title) filter.title = title;
-        if (author) filter.author = author;
+        if (search) filter.search = search;
         if (category) filter.category = category;
 
-        const books = await BookListController.getBookList(filter);
+        await BookListController.getBookList(filter, res);
 
-        if (!books || books.length === 0) {
-          return res.status(404).json({ message: "No books found.........!", data: {data: books} });
-        }
-
-        return res.status(200).json({ 
-          data: {
-            data: books
-          },
-          status: 1 
-        });
       } catch (error) {
         console.error("===> Fetching Error: ", error);
         ResponseUtil.failwithLog(

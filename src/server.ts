@@ -6,7 +6,8 @@ import middleware from "./middleware/index";
 import * as models from "./models/index.model";
 import bookListRoute from "./routes/book-list.route";
 import customerRoute from "./routes/customer.route";
-import orderRoute from "./routes/order.route"
+import orderRoute from "./routes/order.route";
+import categoryRoute from "./routes/category.route";
 
 // mongoose.set('debug', true);
 
@@ -38,6 +39,7 @@ applyMiddleware(middleware, app);
 applyRoutes('/admin/api/v1', bookListRoute, app);
 applyRoutes('/admin/api/v1', customerRoute, app);
 applyRoutes('/admin/api/v1', orderRoute, app);
+applyRoutes('/admin/api/v1', categoryRoute, app);
 
 applyMiddleware(errorHandlers, app);
 
